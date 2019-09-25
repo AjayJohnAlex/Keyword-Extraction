@@ -3,7 +3,13 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 
 def textProcessing(doc):
-
+    '''Prepocessing of input text with 
+    1. tokenisation and Lemmatisation
+    2. Removing stop words 
+    3. Creating and removing custom stop words.
+    4. Generating required Vocabulary from input
+    5. Preprocessing the input 
+    '''
     Nouns = []
     Noun_set = []
     trimmed_noun_set = []
@@ -57,6 +63,7 @@ def textProcessing(doc):
     return vocab_dict , arr
 
 def computeTF(wordDict,bow):
+    '''Computing TF(Term Frequency of the vocab) '''
     tfDict = {}
     bowCount = len(bow)
     for word, count in wordDict.items():
@@ -65,6 +72,7 @@ def computeTF(wordDict,bow):
 
 
 def computeIDF(doclist):
+    '''Computing IDF for the vocab '''
     import math 
     count = 0
     idfDict = {}
@@ -91,6 +99,7 @@ def computeIDF(doclist):
     return idfDict
 
 def computeTfidf(tf,idf):
+    '''Computing TF-IDF for the words in text '''
     tfidf = {}
     sorted_list = []
     for word , val in tf.items():
