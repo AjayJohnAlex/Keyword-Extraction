@@ -1,5 +1,6 @@
 import spacy
 
+'''You can use any spacy language or any size for vocab '''
 nlp = spacy.load("en_core_web_sm")
 
 def textProcessing(doc):
